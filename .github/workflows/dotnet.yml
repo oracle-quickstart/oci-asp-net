@@ -27,8 +27,8 @@ jobs:
       run: dotnet publish -c Release -o mvctest
     - name: Zip Folder
       run: zip -r App.zip mvctest/*
-    - name: Move App.zip to windows-lb/App folder
-      run: mv App.zip windows-lb/App/
+    - name: Move App.zip to windows-lb/userdata folder
+      run: mv App.zip windows-lb/userdata/
     - name: Execute terraform code
       uses: hashicorp/setup-terraform@v1
       with: 
