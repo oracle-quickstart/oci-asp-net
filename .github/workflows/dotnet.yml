@@ -27,13 +27,15 @@ jobs:
       run: dotnet publish -c Release -o mvctest
     - name: Zip Folder
       run: zip -r App.zip mvctest/*
+    - name: Move App.zip to windows-lb/App folder
+      run: mv App.zip windows-lb/App/
     - name: Execute terraform code
       uses: hashicorp/setup-terraform@v1
       with: 
         terraform_version: 0.12.25
-    - run: terraform init
+    - run: terraform init windows-lb
     - id: plan
-      run: terraform plan -no-color
+      run: terraform plan windows-lb -no-color
     - run: echo ${{ steps.plan.outputs.stdout }}
     - run: echo ${{ steps.plan.outputs.stderr }}
     - run: echo ${{ steps.plan.outputs.exitcode }}
