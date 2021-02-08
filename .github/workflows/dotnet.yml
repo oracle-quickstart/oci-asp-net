@@ -25,4 +25,6 @@ jobs:
       run: dotnet test --no-build --verbosity normal
     - name: dotnet publish
       run: dotnet publish -c Release -o mvctest
+    - name: Zip Folder
+      run: zip -r release.zip mvctest/*
         
