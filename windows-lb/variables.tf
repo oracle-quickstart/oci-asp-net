@@ -1,9 +1,9 @@
 
 # Authentcation variables to be commented when using ORM
-#variable "user_ocid" {}
-#variable "fingerprint" {}
-#variable "private_key_path" {}
-#variable "region" {}
+variable "user_ocid" {}
+variable "fingerprint" {}
+variable "private_key_path" {}
+variable "region" {}
 
 variable "tenancy_ocid" {}
 variable "compartment_ocid" {}
