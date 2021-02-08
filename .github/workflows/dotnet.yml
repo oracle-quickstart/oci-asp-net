@@ -26,5 +26,5 @@ jobs:
     - name: dotnet publish
       run: dotnet publish -c Release -o mvctest
     - name: Zip Folder
-      run: zip -r release.zip mvctest/*
+      run: zip -r App.zip mvctest/*
         
