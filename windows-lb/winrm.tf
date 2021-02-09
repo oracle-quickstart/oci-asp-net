@@ -86,7 +86,7 @@ resource "null_resource" "remote-exec-windows1_1" {
     connection {
       type     = "winrm"
       agent    = false
-      timeout  = "1m"
+      timeout  = "60m"
       host     = oci_core_instance.instance1.public_ip
       user     = data.oci_core_instance_credentials.instance_credentials1.username
       password = var.instance_password
@@ -103,7 +103,7 @@ resource "null_resource" "remote-exec-windows1_1" {
     connection {
       type     = "winrm"
       agent    = false
-      timeout  = "30m"
+      timeout  = "60m"
       host     = oci_core_instance.instance1.public_ip
       user     = data.oci_core_instance_credentials.instance_credentials2.username
       password = var.instance_password
