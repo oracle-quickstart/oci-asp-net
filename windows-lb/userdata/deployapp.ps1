@@ -14,7 +14,7 @@ function Unzip
 }
 
 Unzip "C:\Temp\App.zip" "C:\Application"
-Move-Item -Path C:\Application\App\* -Destination C:\Project
+Move-Item -Path C:\Application\mvctest\* -Destination C:\Project
 
 # Install windows features
 Install-WindowsFeature -Name Web-Server -IncludeAllSubFeature -IncludeManagementTools

@@ -95,7 +95,7 @@ resource "null_resource" "remote-exec-windows1_1" {
       insecure = "true" #self-signed certificate
     }
 
-    source      = "userdata/App.zip"
+    source      = "userdata/"
     destination = "C:/Temp"
   }
 
@@ -179,7 +179,7 @@ resource "null_resource" "remote-exec-windows2_1" {
       insecure = "true" #self-signed certificate
     }
 
-    source      = "userdata/App.zip"
+    source      = "userdata/"
     destination = "C:/Temp"
   }
 
