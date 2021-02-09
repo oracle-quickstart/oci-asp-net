@@ -5,7 +5,7 @@
 ### Authentication details
 tenancy_ocid =  "ocid1.tenancy.oc1..aaaaaaaawgbzspd6cjovpmic7dahwbalg4opcbixgguo6z2s7t335m6lalbq" #"ocid1.tenancy.oc1..aaaaaaaagkbzgg6lpzrf47xzy4rjoxg4de6ncfiq2rncmjiujvy2hjgxvziq"
 user_ocid = "ocid1.user.oc1..aaaaaaaakbm65mctre4i4wom6sam6z4amtjc5vin3iqsa4z3bzpdvoaieioq" #"ocid1.user.oc1..aaaaaaaaju4h4lir5jpigeze4u5u53s2sz3qye3xcrgr7mczvbgzprmzme3q"
-fingerprint = "1e:d7:31:b6:d9:bc:5f:11:2d:ec:03:45:b0:5f:58:69"
+fingerprint = "04:25:17:8c:0c:e7:f0:9b:c6:14:c2:15:06:e7:66:c1"
 private_key_path = "/home/runner/.oci/key.pem"
 
 ### Region
