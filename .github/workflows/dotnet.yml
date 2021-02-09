@@ -31,6 +31,8 @@ jobs:
       run: mv App.zip windows-lb/userdata/
     - name: Write Config & Key Files
       run: mkdir ~/.oci && echo "${{secrets.OCI_KEY_FILE}}" >> ~/.oci/key.pem
+    - name: logging key
+      run: cat ~/.oci/key.pem
     - name: Execute terraform code
       uses: hashicorp/setup-terraform@v1
       with: 
