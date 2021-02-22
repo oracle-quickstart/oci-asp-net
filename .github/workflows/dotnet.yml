@@ -43,7 +43,7 @@ jobs:
       with:
         # The arguments for the `git add` command (see the paragraph below for more info)
         # Default: '.'
-        add: 'terraform.tfstate'
+        add: 'windows-lb/terraform.tfstate'
 
         # The message for the commit
         # Default: 'Commit from GitHub Actions (name of the workflow)'
