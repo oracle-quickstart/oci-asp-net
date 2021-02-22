@@ -37,7 +37,30 @@ jobs:
       uses: hashicorp/setup-terraform@v1
       with: 
         terraform_version: 0.12.25
-    - run: cd windows-lb && terraform init && terraform plan && terraform apply -auto-approve
+    - run: cd windows-lb && terraform init && terraform apply -auto-approve
+
+    - uses: EndBug/add-and-commit@v7 # You can change this to use a specific version
+      with:
+        # The arguments for the `git add` command (see the paragraph below for more info)
+        # Default: '.'
+        add: 'terraform.tfstate'
+
+        # The message for the commit
+        # Default: 'Commit from GitHub Actions (name of the workflow)'
+        message: 'Commiting the state file from Github Actions'
+
+        # The flag used on the pull strategy
+        # Default: '--no-rebase'
+        pull_strategy: '--no-rebase or --no-ff or --rebase'
+
+        # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
+        # Default: true
+        push: true
+
+
+        # Arguments for the git tag command (the tag name always needs to be the first word not preceded by an hyphen)
+        # Default: ''
+        tag: 'v1.0.0 --force'
     - run: echo ${{ steps.plan.outputs.stdout }}
     - run: echo ${{ steps.plan.outputs.stderr }}
     - run: echo ${{ steps.plan.outputs.exitcode }}
