@@ -46,17 +46,14 @@ jobs:
         add: 'windows-lb/terraform.tfstate'
 
         # The message for the commit
-        # Default: 'Commit from GitHub Actions (name of the workflow)'
         message: 'Commiting the state file from Github Actions'
 
-        # The flag used on the pull strategy
-        # Default: '--no-rebase'
-        pull_strategy: '--no-rebase or --no-ff or --rebase'
+        pull_strategy: '--rebase'
 
+        cwd: '/home/runner/work/testgit/testgit'
         # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
         # Default: true
         push: true
-
 
         # Arguments for the git tag command (the tag name always needs to be the first word not preceded by an hyphen)
         # Default: ''
