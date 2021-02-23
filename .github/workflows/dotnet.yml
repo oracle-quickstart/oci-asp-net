@@ -38,25 +38,17 @@ jobs:
       with: 
         terraform_version: 0.12.25
     - run: cd windows-lb && terraform init && terraform apply -auto-approve
-
-    - uses: EndBug/add-and-commit@v7 # You can change this to use a specific version
+    - name: Commit files
+      run: |
+        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        git add windows-lb/terraform.tfstate
+        git commit -m "Add tfstate change"
+    - name: Push changes
+      uses: ad-m/github-push-action@master
       with:
-        # The arguments for the `git add` command (see the paragraph below for more info)
-        # Default: '.'
-        add: 'windows-lb/terraform.tfstate'
-
-        # The message for the commit
-        message: 'Commiting the state file from Github Actions'
-
-        pull_strategy: '--rebase'
-
-        # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
-        # Default: true
-        push: true
-
-        # Arguments for the git tag command (the tag name always needs to be the first word not preceded by an hyphen)
-        # Default: ''
-        tag: 'v1.0.0 --force'
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        branch: ${{ github.ref }}
     - run: echo ${{ steps.plan.outputs.stdout }}
     - run: echo ${{ steps.plan.outputs.stderr }}
     - run: echo ${{ steps.plan.outputs.exitcode }}
