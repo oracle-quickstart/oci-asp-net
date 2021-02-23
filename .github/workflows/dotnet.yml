@@ -43,7 +43,7 @@ jobs:
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
         git add windows-lb/terraform.tfstate
-        git commit -m "Add tfstate change"
+        git commit -m "Add tfstate change finally"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
