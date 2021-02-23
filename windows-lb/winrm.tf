@@ -98,23 +98,6 @@ resource "null_resource" "remote-exec-windows1_1" {
     source      = "userdata/"
     destination = "C:/Temp"
   }
-
-  provisioner "file" {
-    connection {
-      type     = "winrm"
-      agent    = false
-      timeout  = "60m"
-      host     = oci_core_instance.instance1.public_ip
-      user     = data.oci_core_instance_credentials.instance_credentials2.username
-      password = var.instance_password
-      port     = var.is_winrm_configured_for_ssl == "true" ? 5986 : 5985
-      https    = var.is_winrm_configured_for_ssl
-      insecure = "true" #self-signed certificate
-    }
-
-    source      = "userdata/deployapp.ps1"
-    destination = "c:/deployapp.ps1"
-  }
 }
 
 resource "null_resource" "remote-exec-windows1_2" {
@@ -136,7 +119,7 @@ resource "null_resource" "remote-exec-windows1_2" {
     }
 
     inline = [
-      "powershell.exe -file c:/deployapp.ps1",
+      "powershell.exe -file C:/Temp/deployapp.ps1",
     ]
   }
 }
@@ -182,23 +165,6 @@ resource "null_resource" "remote-exec-windows2_1" {
     source      = "userdata/"
     destination = "C:/Temp"
   }
-
-  provisioner "file" {
-    connection {
-      type     = "winrm"
-      agent    = false
-      timeout  = "30m"
-      host     = oci_core_instance.instance2.public_ip
-      user     = data.oci_core_instance_credentials.instance_credentials2.username
-      password = var.instance_password
-      port     = var.is_winrm_configured_for_ssl == "true" ? 5986 : 5985
-      https    = var.is_winrm_configured_for_ssl
-      insecure = "true" #self-signed certificate
-    }
-
-    source      = "userdata/deployapp.ps1"
-    destination = "c:/deployapp.ps1"
-  }
 }
 
 resource "null_resource" "remote-exec-windows2_2" {
@@ -220,7 +186,7 @@ resource "null_resource" "remote-exec-windows2_2" {
     }
 
     inline = [
-      "powershell.exe -file c:/deployapp.ps1",
+      "powershell.exe -file C:/Temp/deployapp.ps1",
     ]
   }
 }

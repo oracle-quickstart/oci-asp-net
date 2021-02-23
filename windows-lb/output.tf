@@ -4,16 +4,8 @@ output "username1" {
   value = [data.oci_core_instance_credentials.instance_credentials1.username]
 }
 
-output "password1" {
-  value = [data.oci_core_instance_credentials.instance_credentials1.password]
-}
-
 output "username2" {
   value = [data.oci_core_instance_credentials.instance_credentials2.username]
-}
-
-output "password2" {
-  value = [data.oci_core_instance_credentials.instance_credentials2.password]
 }
 
 output "instance_public_ip1" {
