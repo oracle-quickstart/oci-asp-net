@@ -40,7 +40,7 @@ jobs:
     - name: Perform terraform apply
       run: cd windows-lb && terraform init && terraform apply -auto-approve
     - name: Perform terraform taint operation
-      run: cd windows-lb && terraform taint null_resource.remote-exec-windows1_1 && terraform taint null_resource.remote-exec-windows1_2  && terraform taint null_resource.remote-exec-windows2_1 && terraform taint null_resource.remote-exec-windows2_2
+      run: cd windows-lb && terraform taint null_resource.remote-exec-windows1_1[0] && terraform taint null_resource.remote-exec-windows1_2  && terraform taint null_resource.remote-exec-windows2_1[0] && terraform taint null_resource.remote-exec-windows2_2
     - name: Commit files
       run: |
         git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
