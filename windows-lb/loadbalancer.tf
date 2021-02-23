@@ -10,7 +10,7 @@
  * it uses dummy certs.
  */
 
-/* Load Balancer */
+/* Load Balancer with 2 subnets*/
 resource "oci_load_balancer" "lb1" {
   shape          = "100Mbps"
   compartment_id = var.compartment_ocid
