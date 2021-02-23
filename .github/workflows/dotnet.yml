@@ -33,12 +33,12 @@ jobs:
       run: mkdir ~/.oci && echo "${{secrets.OCI_KEY_FILE}}" >> ~/.oci/key.pem
     - name: logging key
       run: cat ~/.oci/key.pem
-    - name: Execute terraform code
+    - name: Setup terraform
       uses: hashicorp/setup-terraform@v1
       with: 
         terraform_version: 0.12.25
     - name: Perform terraform apply
-      run: cd windows-lb && terraform apply -auto-approve
+      run: cd windows-lb && terraform init && terraform apply -auto-approve
     - name: Perform terraform taint operation
       run: cd windows-lb && terraform taint null_resource.remote-exec-windows1_1 && terraform taint null_resource.remote-exec-windows1_2  && terraform taint null_resource.remote-exec-windows2_1 && terraform taint null_resource.remote-exec-windows2_2
     - name: Commit files
