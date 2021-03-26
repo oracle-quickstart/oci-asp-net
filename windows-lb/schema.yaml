@@ -16,6 +16,16 @@ variableGroups:
   visible: true  
   variables:
     - instance_password
+
+outputGroups:
+- title: Deployment Details
+  outputs:
+    - instance_public_ip1
+    - instance_public_ip2
+    - username1
+    - username2
+    - lb_public_ip
+
 outputs:
   instance_public_ip1:
     type: link
@@ -37,6 +47,7 @@ outputs:
     type: link
     title: Launch Application
     description: Open the ASP.NET application deployed to OCI
+
 primaryOutputButton: lb_public_ip
 
 variables:
@@ -44,8 +55,8 @@ variables:
     type: password
     required: true
     title: "Windows login password for user: opc"
-    description: "Used to login to the instance over remote desktop. Password must at least 8 characters long and include at least one uppercase letter, one lowercase letter, and one numeric character"
-    pattern: "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\\\"\\\\|,.<>\\/?]).{8,32}$"
+    description: "Used to login to the instance over remote desktop. Password must at least 12 characters long and include at least one uppercase letter, one lowercase letter, and one numeric character"
+    pattern: "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\\\"\\\\|,.<>\\/?]).{12,32}$"
     visible: true
   compartment_ocid:
     type: oci:identity:compartment:id

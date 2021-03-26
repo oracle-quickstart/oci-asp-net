@@ -17,6 +17,6 @@ output "instance_public_ip2" {
 }
 
 output "lb_public_ip" {
-  value = oci_load_balancer.lb1.ip_address_details[0].ip_address
+  value = "http://${oci_load_balancer.lb1.ip_address_details[0].ip_address}"
 }
 
