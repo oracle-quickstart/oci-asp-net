@@ -1,4 +1,15 @@
 
+
+terraform {
+  required_providers {
+    oci = {
+      source = "hashicorp/oci"
+    }    
+  }
+  required_version = ">= 0.14"
+}
+
+
 provider "oci" {
   tenancy_ocid     = var.tenancy_ocid
   user_ocid        = var.user_ocid
