@@ -1,5 +1,5 @@
 title: "Deploy a .NET application to Microsoft Windows instances"
-description: "Deploy a sample AST .NET application in a highly available configuration, with two Windows instances and a load balancer."
+description: "Deploy a sample ASP .NET application in a highly available configuration, with two Windows instances and a load balancer."
 schemaVersion: 1.1.0
 version: "20190304"
 locale: "en"
