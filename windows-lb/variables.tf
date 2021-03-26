@@ -30,7 +30,7 @@ variable "availability_domain" {
 }
 
 variable "instance_password" {
-  default = "Password~123"
+  
 }
 
 variable "userdata" {
