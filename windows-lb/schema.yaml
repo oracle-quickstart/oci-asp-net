@@ -11,11 +11,30 @@ variableGroups:
   - tenancy_ocid
   - region
   - compartment_ocid
+  
 
 - title: Windows Remote Desktop Configuration
   visible: true  
   variables:
     - instance_password
+
+- title: Advanced Configuration
+  visible: false  
+  variables:
+    - load_balancer_shape_details_maximum_bandwidth_in_mbps
+    - load_balancer_shape_details_minimum_bandwidth_in_mbps
+    - instance_shape
+    - instance_name
+    - availability_domain
+    - userdata
+    - cloudinit_ps1
+    - cloudinit_config
+    - index_html
+    - image_os
+    - image_os_version
+    - is_winrm_configured_for_image
+    - is_winrm_configured_for_ssl
+
 
 outputGroups:
 - title: Deployment Details
