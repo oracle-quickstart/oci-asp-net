@@ -8,31 +8,10 @@ resource "oci_core_vcn" "vcn1" {
   dns_label      = "vcn1"
 }
 
-variable "subnet_cidr" {
-  type = list(string)
-  default = ["10.1.20.0/24", "10.1.21.0/24"]
-}
 resource "oci_core_subnet" "subnet1" {
-  availability_domain = data.oci_identity_availability_domain.ad1.name
   cidr_block          = var.subnet_cidr[0]
   display_name        = "subnet1"
   dns_label           = "subnet1"
-  security_list_ids   = [oci_core_security_list.securitylist1.id]
-  compartment_id      = var.compartment_ocid
-  vcn_id              = oci_core_vcn.vcn1.id
-  route_table_id      = oci_core_route_table.routetable1.id
-  dhcp_options_id     = oci_core_vcn.vcn1.default_dhcp_options_id
-
-  provisioner "local-exec" {
-    command = "sleep 5"
-  }
-}
-
-resource "oci_core_subnet" "subnet2" {
-  availability_domain = data.oci_identity_availability_domain.ad2.name
-  cidr_block          = var.subnet_cidr[1]
-  display_name        = "subnet2"
-  dns_label           = "subnet2"
   security_list_ids   = [oci_core_security_list.securitylist1.id]
   compartment_id      = var.compartment_ocid
   vcn_id              = oci_core_vcn.vcn1.id

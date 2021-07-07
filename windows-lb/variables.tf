@@ -26,11 +26,19 @@ variable "instance_name" {
 }
 
 variable "availability_domain" {
-  default = 3
+  default = 1
+}
+
+variable "num_nodes" {
+  default = 2
+}
+
+variable "instance_ocpus" {
+  default = 1
 }
 
 variable "instance_password" {
-  
+
 }
 
 variable "userdata" {
@@ -54,4 +62,22 @@ variable "image_os" {
 }
 variable "image_os_version" {
   default = "Server 2012 R2 Standard"
+}
+
+variable "subnet_cidr" {
+  type    = list(string)
+  default = ["10.1.20.0/24", "10.1.21.0/24"]
+}
+
+locals {
+  compute_flexible_shapes = [
+    "VM.Standard.E3.Flex",
+    "VM.Standard.E4.Flex"
+  ]
+  compute_shape_flexible_descriptions = [
+    "Cores for Standard.E3.Flex and BM.Standard.E3.128 Instances",
+    "Cores for Standard.E4.Flex and BM.Standard.E4.128 Instances"
+  ]
+  compute_shape_flexible_vs_descriptions = zipmap(local.compute_flexible_shapes, local.compute_shape_flexible_descriptions)
+  compute_shape_description              = lookup(local.compute_shape_flexible_vs_descriptions, local.instance_shape, local.instance_shape)
 }
