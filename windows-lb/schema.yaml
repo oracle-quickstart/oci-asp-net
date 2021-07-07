@@ -1,23 +1,24 @@
 title: "Deploy a .NET application to Microsoft Windows instances"
-description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.stackDescription()}
+description: "Deploy a sample ASP .NET application in a highly available configuration, with two Windows instances and a load balancer."
 schemaVersion: 1.1.0
 version: "20190304"
 locale: "en"
 
 variableGroups:
-- title: ${Messages.solutionsHub.generalConfig()}
+- title: General Configuration
   visible: false
   variables:
   - tenancy_ocid
   - region
   - compartment_ocid
   
-- title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variableGroups.remoteDesktopTitle()}
+
+- title: Windows Remote Desktop Configuration
   visible: true  
   variables:
     - instance_password
 
-- title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variableGroups.advancedConfigTitle()}
+- title: Advanced Configuration
   visible: false  
   variables:
     - num_nodes
@@ -39,7 +40,7 @@ variableGroups:
 
 
 outputGroups:
-- title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputGroups.deploymentDetailsTitle()}
+- title: Deployment Details
   outputs:
     - instance_public_ip1
     - instance_public_ip2
@@ -50,24 +51,24 @@ outputGroups:
 outputs:
   instance_public_ip1:
     type: link
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputs.instancePublicIp1Title()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputs.instancePublicIp1Description()}
+    title: Instance 1
+    description: Public IP for connecting to instance 1 over Remote Desktop
   instance_public_ip2:
     type: link
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputs.instancePublicIp2Title()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputs.instancePublicIp2Description()}
+    title: Instance 2 Public IP
+    description: Public IP for connecting to instance 2 over Remote Desktop
   username1:
     type: link
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputs.username1Title()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputs.username1Description()}
+    title: Username (instance 1)
+    description: User name login to instance 1
   username2:
     type: link
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputs.username2Title()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputs.username2Description()}
+    title: Username (instance 2)
+    description: Username to login to instance 2
   lb_public_ip:
     type: link
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputs.lbPublicIpTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.outputs.lbPublicIpDescription()}
+    title: Launch Application
+    description: Open the ASP.NET application deployed to OCI
 
 primaryOutputButton: lb_public_ip
 
@@ -75,90 +76,90 @@ variables:
   instance_password:
     type: password
     required: true
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.instancePasswordTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.instancePasswordDescription()}
+    title: "Windows login password for user: opc"
+    description: "Used to login to the instance over remote desktop. Password must at least 12 characters long and include at least one uppercase letter, one lowercase letter, and one numeric character"
     pattern: "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\\\"\\\\|,.<>\\/?]).{12,32}$"
     visible: true
   compartment_ocid:
     type: oci:identity:compartment:id
-    title: ${Messages.solutionsHub.genericVariables.compartment.title()}
-    description: ${Messages.solutionsHub.genericVariables.compartment.description()}
+    title: "Compartment"
+    description: "The compartment in which to create Apex instance"
     required: true
   load_balancer_shape_details_maximum_bandwidth_in_mbps:
     type: string
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.loadBalancerShapeDetailsMaximumBandwidthInMbpsTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.loadBalancerShapeDetailsMaximumBandwidthInMbpsDescription()}
+    title: "Load Balancer Max Bandwidth"
+    description: "Maximum Bandwidth the Load Balancer will scale to"
   load_balancer_shape_details_minimum_bandwidth_in_mbps:
     type: string
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.loadBalancerShapeDetailsMinimumBandwidthInMbpsTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.loadBalancerShapeDetailsMinimumBandwidthInMbpsDescription()}
+    title: "Load Balancer Min Bandwidth"
+    description: "Minimum Bandwidth the Load Balancer will scale to"
   instance_shape:
     type: string
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.instanceShapeTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.instanceShapeDescription()}
+    title: "Instance Shape"
+    description: "The compute shape to use."
   instance_name:
     type: string
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.instanceNameTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.instanceNameDescription()}
+    title: "Instance Name"
+    description: "Name for the instance"
   availability_domain:
     type: number
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.availabilityDomainTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.availabilityDomainDescription()}
+    title: "Availability Domain"
+    description: "The availability domain to deploy the compute instances"
   userdata:
     type: string
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.userdataTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.userdataDescription()}
+    title: "userdata directory"
+    description: "Name of the userdata directory"
   cloudinit_ps1:
     type: string
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.cloudinitPs1Title()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.cloudinitPs1Description()}
+    title: "cloudinit_ps1 name"
+    description: "Name of the cloudinit_ps1 script"
   cloudinit_config:
     type: string
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.cloudinitConfigTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.cloudinitConfigDescription()}
+    title: "cloudinit_config name"
+    description: "Name of the cloudinit_config file"
   index_html:
     type: string
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.indexHtmlTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.indexHtmlDescription()}
+    title: "index_html file"
+    description: "Name of the index_html file"
   image_os:
     type: string
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.imageOsTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.imageOsDescription()}
+    title: "OS Image"
+    description: "The OS image to use"
   image_os_version:
     type: string
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.imageOsVersionTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.imageOsVersionDescription()}
+    title: "OS version"
+    description: "Version of the image os"
   is_winrm_configured_for_image:
     type: boolean
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.isWinrmConfiguredForImageTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.isWinrmConfiguredForImageDescription()}
+    title: "WinRM enabled Image ?"
+    description: "WinRM support in image"
   is_winrm_configured_for_ssl:
     type: boolean
     required: false
     visible: false
-    title: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.isWinrmConfiguredForSslTitle()}
-    description: ${Messages.solutionsHub.solutions.aspnetQuickstarts.variables.isWinrmConfiguredForSslDescription()}
+    title: "Use SSL for WinRM ?"
+    description: "Use SSL for WinRM"
