@@ -33,9 +33,7 @@ To deploy this solution using Oracle Resource Manager, click on the deployment b
 
 [![Deploy to Oracle Cloud](https://oci-resourcemanager-plugin.plugins.oci.oraclecloud.com/latest/deploy-to-oracle-cloud.svg)](https://cloud.oracle.com/resourcemanager/stacks/create?region=home&zipUrl=https://github.com/oracle-quickstart/oci-asp-net/releases/download/v0.0.1/oci-dotnet-stack.zip)
 
-Alternatively, you can download the stack for this solution from the **Releases** a section of this repository. Navigate to Oracle resource manager in the Oracle Cloud Infrastructure console. Here import the zip file as a new resource manager stack.You can now perform terraform actions like plan or apply.
-
-The stack exposes several variables that can be configured. By default the stack only prompts the user for the administrative password for WordPress. Users can choose to use the advanced options to provide further configuration of the stack.
+Alternatively, you can download the stack for this solution from the **Releases** a section of this repository. Navigate to Oracle resource manager in the Oracle Cloud Infrastructure console. Here import the zip file as a new resource manager stack. You can now perform terraform actions like plan or apply.
 
 ### Deploy Using the Terraform CLI
 
@@ -44,8 +42,8 @@ The stack exposes several variables that can be configured. By default the stack
 Now, you'll want a local copy of this repo. You can make that with the commands:
 
 ```
-    git clone https://github.com/oracle-quickstart/oci-arch-wordpress-mds.git
-    cd oci-arch-wordpress-mds/micro-deployment
+    git clone https://github.com/oracle-quickstart/oci-asp-net.git
+    cd oci-asp-net
     ls
 ```
 
@@ -84,11 +82,11 @@ Run the following commands:
 
 
 #### Testing your Deployment
-After the deployment is finished, you can access WP-Admin by picking wordpress_wp-admin_url output and pasting into web browser window. You can also verify initial content of your blog by using wordpress_public_ip:
+After the deployment is finished, you can access the test ASP.NET Application using the loadbalancer IP address which is created as an output key called lb_public_ip.
 
 ````
-wordpress_wp-admin_url = http://193.122.198.19/wp-admin/
-wordpress_public_ip = 193.122.198.19
+lb_public_ip = 193.122.198.19
+
 `````
 
 ### Destroy the Deployment
