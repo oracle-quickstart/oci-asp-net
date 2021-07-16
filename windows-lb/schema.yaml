@@ -242,9 +242,6 @@ variables:
           - eq:
             - instance_shape
             - "VM.Optimized3.Flex"
-          - eq:
-            - instance_shape
-            - "VM.Standard.A1.Flex"
 
   flex_shape_memory:
     type: number
@@ -267,9 +264,6 @@ variables:
           - eq:
             - instance_shape
             - "VM.Optimized3.Flex"
-          - eq:
-            - instance_shape
-            - "VM.Standard.A1.Flex"
   
   instance_name:
     type: string
