@@ -59,7 +59,7 @@ variable "is_winrm_configured_for_ssl" {
 
 ### Initialize instance1
 resource "null_resource" "wait_for_cloudinit1" {
-  count         = var.is_winrm_configured_for_image == "true" ? 1 : 0
+  count = var.is_winrm_configured_for_image == "true" ? 1 : 0
   depends_on = [
     oci_core_instance.instance1
   ]
