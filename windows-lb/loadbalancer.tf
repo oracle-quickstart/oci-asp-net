@@ -1,18 +1,17 @@
-// Copyright (c) 2017, 2021, Oracle and/or its affiliates. All rights reserved.
-// Licensed under the Mozilla Public License v2.0
+## Copyright © 2021, Oracle and/or its affiliates. 
+## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
-/*
- * This example demonstrates round robin load balancing behavior by creating two instances, a configured
- * vcn and a load balancer. The public IP of the load balancer is outputted after a successful run, curl
- * this address to see the hostname change as different instances handle the request.
- *
- * NOTE: The https listener is included for completeness but should not be expected to work,
- * it uses dummy certs.
- */
-
-/* Load Balancer with 2 subnets*/
 resource "oci_load_balancer" "lb1" {
-  shape          = "100Mbps"
+  shape = var.lb_shape
+
+  dynamic "shape_details" {
+    for_each = local.is_flexible_lb_shape ? [1] : []
+    content {
+      minimum_bandwidth_in_mbps = var.flex_lb_min_shape
+      maximum_bandwidth_in_mbps = var.flex_lb_max_shape
+    }
+  }
+
   compartment_id = var.compartment_ocid
 
   subnet_ids = [
@@ -23,6 +22,7 @@ resource "oci_load_balancer" "lb1" {
   reserved_ips {
     id = oci_core_public_ip.test_reserved_ip.id
   }
+  defined_tags = { "${oci_identity_tag_namespace.ArchitectureCenterTagNamespace.name}.${oci_identity_tag.ArchitectureCenterTag.name}" = var.release }
 }
 
 resource "oci_load_balancer_backend_set" "lb-bes1" {
