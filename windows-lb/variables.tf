@@ -14,9 +14,14 @@ variable "availablity_domain_name" {
   default = ""
 }
 
+variable "show_advanced" {
+  default = false
+}
+
 variable "deploy_db_tier" {
   default = true
 }
+
 variable "instance_password" {}
 
 variable "release" {

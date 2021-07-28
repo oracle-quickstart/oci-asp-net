@@ -1,7 +1,7 @@
 title: "Deploy a .NET application to Microsoft Windows instances"
 description: "Deploy a sample ASP .NET application in a highly available configuration, with two Windows instances and a load balancer."
 schemaVersion: 1.1.0
-version: "20190304"
+version: "20190404"
 locale: "en"
 
 variableGroups:
@@ -22,8 +22,8 @@ variableGroups:
 
 - title: Networking Configuration
   visible: 
-    and:
-      - show_advanced 
+      and:
+        - show_advanced 
   variables:   
   - vcn_cidr
   - subnet1_cidr
@@ -31,27 +31,27 @@ variableGroups:
 
 - title: Load Balancer Configuration
   visible: 
-    and:
-      - show_advanced
+      and:
+        - show_advanced
   variables:
   - lb_shape
   - flex_lb_min_shape
   - flex_lb_max_shape
 
-- title: Load Balancer Configuration
+- title: Compute Configuration
   visible: 
-    and:
-      - show_advanced
+      and:
+        - show_advanced
   variables:
   - instance_shape
   - shape_flex_ocpus
   - shape_flex_memory
   - instance_name
 
-- title: MS SQL Configuration
+- title: MSSQL Configuration
   visible: 
-    and:
-      - show_advanced
+      and:
+        - show_advanced
   variables:
   - mssql_primary_shape
   - mssql_standby_shape
@@ -107,6 +107,13 @@ outputs:
 
 variables:
 
+  show_advanced:
+    type: boolean
+    title: "Show advanced options?"
+    description: "Shows advanced options."
+    visible: true
+    default: false
+
   instance_password:
     type: password
     required: true
@@ -133,7 +140,7 @@ variables:
   deploy_db_tier:
     type: boolean
     visibile: true
-    default: false
+    default: true
     required: false
     title: "Deploy MS SQL Primary and Standby nodes"
     description: "Check the box to deploy MS SQL Primary and Standby nodes in private subnet."

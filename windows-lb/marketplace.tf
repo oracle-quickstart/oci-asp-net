@@ -1,4 +1,4 @@
-## Copyright (c) 2020, Oracle and/or its affiliates. 
+## Copyright © 2021, Oracle and/or its affiliates. 
 ## All rights reserved. The Universal Permissive License (UPL), Version 1.0 as shown at http://oss.oracle.com/licenses/upl
 
 resource "oci_marketplace_accepted_agreement" "Accepted_Agreement" {
